@@ -17,6 +17,9 @@
 
    <div id="container"></div>
 
+   <a href="https://www.dropbox.com/s/u0bdwmkjmqld9l2/dbx-supporting-distributed-work.gif?dl=0"
+      class="dropbox-embed">x</a>
+
    <!-- <button id="dropbox-button">Upload to Dropbox</button> -->
 
    <script>
@@ -58,7 +61,19 @@
          // less than or equal to this limit.
          // For the purposes of this option, folders have size zero.
          sizeLimit: 1024, // or any positive number
-      };
+         // Shared link to Dropbox file
+         link: "https://www.dropbox.com/sh/keptcjl08q3wsid/AACui966iXcXPbagCJ2py2L-a?dl=0",
+         file: {
+            // Sets the zoom mode for embedded files. Defaults to 'best'.
+            zoom: "best" // or "fit"
+         },
+         folder: {
+            // Sets the view mode for embedded folders. Defaults to 'list'.
+            view: "list", // or "grid"
+            headerSize: "normal" // or "small"
+         }
+      }
+      Dropbox.embed(options, element);
       var button = Dropbox.createChooseButton(options);
       document.getElementById("container").appendChild(button);
 
