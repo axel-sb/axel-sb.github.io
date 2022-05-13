@@ -20,6 +20,7 @@
 <body>
 
    <div id="container"></div>
+   <div id="container2"></div>
    <script>
       let element = document.getElementById("container")
       var options = {
@@ -37,6 +38,24 @@
       }
       Dropbox.embed(options, element);
    </script>
+   <script>
+      let element = document.getElementById("container2")
+      var options = {
+         // Shared link to Dropbox file
+         link: "https://www.dropbox.com/sh/p8m6mssvpfmu23b/AACKir5RinLS_L6IVAq28THCa?dl=0",
+         file: {
+            // Sets the zoom mode for embedded files. Defaults to 'best'.
+            zoom: "best" // or "fit"
+         },
+         folder: {
+            // Sets the view mode for embedded folders. Defaults to 'list'.
+            view: "grid", // or "grid"
+            headerSize: "normal" // or "small"
+         }
+      }
+      Dropbox.embed(options, element);
+   </script>
+
    <!-- <button id="dropbox-button">Upload to Dropbox</button> -->
 
    <!-- <script>
