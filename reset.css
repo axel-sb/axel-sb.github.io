@@ -1,0 +1,85 @@
+/*// 20211127 https://www.joshwcomeau.com/css/custom-css-reset/#digit-font-smoothing */
+
+/*//
+  1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/*//
+  2. Remove default margin
+*/
+* {
+  margin: 0;
+}
+
+/*//
+  3. Allow percentage-based heights in the application
+  In Flow layout (the primary layout mode in CSS), height and width operate on fundamentally different principles. The width of an element is calculated based on its parent, but the height of an element is calculated based on its children.
+
+  Why not use vh?
+  You might be wondering: why fuss with percentage-based heights at all? Why not use the vh unit instead?
+
+  The problem is that the vh unit doesn't work properly on mobile devices; 100vh will take up more than 100% of the screen real estate, because mobile browsers do that thing where the browser UI comes and goes.
+
+  In the future, new CSS units will solve for this. Until then, I continue using percentage-based heights.
+*/
+html, body {
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+  /*https://arunkprasad.com/log/how-to-make-a-website-work-on-mobile/ */
+  text-size-adjust: 100%;
+}
+
+/*/
+  / Typographic tweaks ! 4. Add accessible line-height 5. Improve text rendering */ body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /*//
+  6. Improve media defaults
+  So here's a weird thing: images are considered "inline" elements. This implies that they should be used in the middle of paragraphs, like <em> or <strong>.
+
+  This doesn't jive with how I use images most of the time. Typically, I treat images the same way I treat paragraphs or headers or sidebars; they're layout elements.
+
+  If we try to use an inline element in our layout, though, weird things happen. If you've ever had a mysterious 4px gap that wasn't margin or padding or border, it was probably the “inline magic space” that browsers add with line-height.
+
+  By setting display: block on all images by default, we sidestep a whole category of funky issues.
+
+  I also set max-width: 100%. This is done to keep large images from overflowing, if they're placed in a container that isn't wide enough to contain them.
+
+  Most block-level elements will automatically grow/shrink to fit their parent, but media elements like <img> are special: they're known as replaced elements, and they don't follow the same rules.
+
+  If an image has a "native" size of 800×600, the <img> element will also be 800px wide, even if we plop it into a 500px-wide parent.
+
+  This rule will prevent that image from growing beyond its container, which feels like much more sensible default behavior to me.
+
+  */
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  /*//
+  7. Remove built-in form typography styles
+  By default, buttons and inputs don't inherit typographical styles from their parents. Instead, they have their own weird styles.
+*/
+  input, button, textarea, select {
+    font: inherit;
+  }
+
+  /*//
+  8. Avoid text overflows
+*/
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+
+  /*//
+  9. Create a root stacking context
+*/
+  #root, #__next {
+    isolation: isolate;
+  }
